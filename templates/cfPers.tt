@@ -1,0 +1,10 @@
+[%- FOREACH au IN contributor %]
+ <cfPers>
+  [%- IF au.ugent_id.size %]
+    <cfPersId>[% au.ugent_id.first | html %]</cfPersId>
+    <cfURI>http://biblio.ugent.be/person/[% au.ugent_id.first | html %]</cfURI>
+  [%- ELSE %]
+    <cfPersId>[% au.name | html %]</cfPersId>
+  [%- END %]
+ </cfPers> 
+[%- END %]

@@ -1,0 +1,8 @@
+[%- IF abstract.size %]
+<cfResPublAbstract>
+  <cfResPublId>[% id | html %]</cfResPublId>
+  <cfResAbstr>[% abstract.0 | html %]</cfResAbstr>
+  <cfLangCode>eng</cfLangCode>
+  <cfTrans>o</cfTrans>
+</cfResPublAbstract>
+[%- END %]

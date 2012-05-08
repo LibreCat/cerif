@@ -1,0 +1,35 @@
+<cfResPubl>
+ [%- IF id %]
+  <cfResPublId>[%- id | html -%]</cfResPublId>
+ [%- END %]
+ [%- IF year %]
+  <cfResPublDate>[%- year | html -%]</cfResPublDate>
+ [%- END %]
+ [%- IF volume %]
+  <cfVol>[%- volume | html -%]</cfVol>
+ [%- END %]
+ [%- IF edition %]
+  <cfEdition>[%- edition | html -%]</cfEdition>
+ [%- END %]
+ [%- IF series_title %]
+  <cfSeries>[%- series_title | html -%]</cfSeries>
+ [%- END %]
+ [%- IF issue %]
+  <cfIssue>[%- issue | html -%]</cfResPubl>
+ [%- END %]
+ [%- IF page.item.first %]
+  <cfStartPage>[%- page.item.first | html -%]</cfStartPage>
+ [%- END %]
+ [%- IF page.item.last %]
+  <cfEndPage>[%- page.item.last | html -%]</cfEndPage>
+ [%- END %]
+ [%- IF isbn.size %]
+  <cfISBN>[%- isbn.first | html-%]</cfISBN>
+ [%- END -%]
+ [%- IF issn.size %]
+  <cfISSN>[%- issn.first | html-%]</cfISSN>
+ [%- END %]
+ [%- IF id %]
+  <cfURI>http://biblio.ugent.be/publication/[%- id | html -%]</cfURI>
+ [%- END %]
+</cfResPubl>

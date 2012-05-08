@@ -1,0 +1,12 @@
+<cfResPublTitle>
+ [%- IF id %]
+ <cfResPublId>[% id | html %]</cfResPublId>
+ [%- END %]
+ [%- IF title %]
+ <cfTitle>[% title | html %]</cfTitle>
+ [%- END %]
+ [%- IF language.size %]
+ <cfLangCode>[% language.first | html %]</cfLangCode>
+ [%- END %]
+ <cfTrans>o</cfTrans>
+</cfResPublTitle>
