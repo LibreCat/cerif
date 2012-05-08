@@ -41,10 +41,10 @@ sub cerif_open {
     $fh->print(<<EOF);
 <?xml version="1.0" encoding="UTF-8"?>
 <CERIF
- xsi:schemaLocation="http://www.eurocris.org/fileadmin/cerif-2008/XML-SCHEMAS/$name http://www.eurocris.org/fileadmin/cerif-2008/XML-SCHEMAS/$name.xsd"
- xmlns="http://www.eurocris.org/fileadmin/cerif-2008/XML-SCHEMAS/$name"
+ xsi:schemaLocation="urn:xmlns:org:eurocris:cerif-1.4-0 http://www.eurocris.org/Uploads/Web%20pages/CERIF-1.4/CERIF_1.4_0.xsd"
+ xmlns="urn:xmlns:org:eurocris:cerif-1.4-0"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- release="2008-1.0"
+ release="2008-1.4"
  date="$date"
  sourceDatabase="$source"
 >
