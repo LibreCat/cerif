@@ -1,0 +1,10 @@
+[%- FOREACH au IN contributor -%]
+ [% IF au.affiliation.size %]
+   [%- FOREACH aff IN au.affiliation %]
+  <cfPers_OrgUnit>
+   <cfPersId>[% au.ugent_id.first | html %]</cfPersId>
+   <cfOrgUnitId>[% aff.ugent_id | html %]</cfOrgUnitId>
+  </cfPers_OrgUnit>
+   [%- END %]
+ [% END %]
+[%- END -%]

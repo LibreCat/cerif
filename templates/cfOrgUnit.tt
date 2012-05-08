@@ -1,0 +1,13 @@
+[%- FOREACH org IN affiliation -%]
+[%- org_id = org.ugent_id -%]
+[%- IF memory.${org_id} == 1 -%]
+[%- ELSE -%]
+ [%- IF org.ugent_id %]
+<cfOrgUnit>
+   <cfOrgUnitId>[% org_id | html %]</cfOrgUnit>
+   <cfURI>https://biblio.ugent.be/organization/[% org_id | html %]</cfURI>
+</cfOrgUnit>
+ [%- END -%]
+[%- memory.${org_id} = 1 -%]
+[%- END %]
+[%- END -%]

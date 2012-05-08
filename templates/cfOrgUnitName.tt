@@ -1,0 +1,15 @@
+[%- FOREACH org IN affiliation -%]
+[%- org_id = org.ugent_id -%]
+[%- IF memory.${org_id} == 1 -%]
+[%- ELSE -%]
+ [%- IF org.ugent_id %]
+<cfOrgUnitName>
+   <cfOrgUnitId>[% org_id | html %]</cfOrgUnit>
+   <cfName>[% org.name %]</cfName>
+   <cfLangCode>eng</cfLangCode>
+   <cfTrans>o</cfTrans>
+</cfOrgUnitName>
+ [%- END -%]
+[%- memory.${org_id} = 1 -%]
+[%- END %]
+[%- END -%]

@@ -24,6 +24,10 @@ cerif_process('output/cfResPublAbstract-LANG.xml','cfResPublAbstract.tt');
 cerif_process('output/cfResPublKeyw-LANG.xml','cfResPublKeyw.tt');
 cerif_process('output/cfPers_ResPubl-LINK.xml','cfPers_ResPubl.tt');
 cerif_process('output/cfPers-CORE.xml','cfPers.tt');
+cerif_process('output/cfPersName-ADD.xml','cfPersName.tt');
+cerif_process('output/cfOrgUnit-CORE.xml','cfOrgUnit.tt');
+cerif_process('output/cfOrgName-LANG.xml','cfOrgUnitName.tt');
+cerif_process('output/cfPers_OrgUnit-LINK.xml','cfPers_OrgUnit.tt');
 
 sub cerif_open {
     my ($name) = @_;
@@ -53,9 +57,11 @@ sub cerif_process {
     
     my $fh = cerif_open($output);
 
+    my $memory = {};
     Catmandu->exporter('Template', file => $fh , template => "$proj_dir/templates/$template")
             ->add_many(Catmandu->importer('JSON', file => $infile)->tap(sub {
             my $obj = $_[0];
+            $obj->{memory} = $memory;
             $obj->{id} = $obj->{_id};
             }));
 

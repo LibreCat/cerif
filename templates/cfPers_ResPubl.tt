@@ -1,8 +1,12 @@
+[% USE Digest.MD5 -%]
 [%- FOREACH au IN contributor %]
- [%- IF au.ugent_id.size %]
+  [%- IF au.ugent_id.size %]
+    [%- pers_id = au.ugent_id.first -%]
+  [%- ELSE -%]
+    [%- pers_id = au.name.md5_hex -%]
+  [%- END %]
   <cfPers_ResPubl>
-    <cfPersId>[% au.ugent_id.first | html %]</cfPersId>  
+    <cfPersId>[% pers_id | html %]</cfPersId>  
     <cfResPublId>[% id | html %]</cfResPublId>
   </cfPers_ResPubl>
- [%- END %]
 [%- END %]

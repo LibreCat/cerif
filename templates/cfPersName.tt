@@ -9,12 +9,11 @@
   [%- END %]
   [%- IF memory.${pers_id} == 1 %]
   [%- ELSE %]
-   <cfPers>
+   <cfPersName>
       <cfPersId>[% pers_id | html %]</cfPersId>
-      [%- IF pers_hasurl == 1 %]
-      <cfURI>http://biblio.ugent.be/person/[% pers_id | html %]</cfURI>
-      [%- END %]
-   </cfPers> 
+      <cfFamilyNames>[% au.last_name | html %]</cfFamilyNames>
+      <cfFirstNames>[% au.first_name | html %]</cfFirstNames>
+   </cfPersName> 
    [%- memory.${pers_id} = 1 -%]
   [%- END %]
 [%- END %]
