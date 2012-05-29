@@ -7,27 +7,35 @@
 #
 use Catmandu;
 use IO::File;
+use File::Temp;
 use POSIX qw(strftime);
 
 my $infile = shift;
-die "usage: $0 file" unless -r $infile;
+my $outfile = shift || "CERIF.zip";
+
+die "usage: $0 file [outfile]" unless -r $infile;
 
 my $proj_dir = '/Users/hochsten/Dev/CERIF';
 die "proj_dir($proj_dir) not found - please correct path in json2serif.pl" unless -d $proj_dir;
 
 chdir $proj_dir;
 
-cerif_process('output/cfResPubl-RES.xml','cfResPubl.tt');
-cerif_process('output/cfResPublTitle-LANG.xml','cfResPublTitle.tt');
-cerif_process('output/cfResPublSubtitle-LANG.xml','cfResPublSubtitle.tt');
-cerif_process('output/cfResPublAbstr-LANG.xml','cfResPublAbstr.tt');
-cerif_process('output/cfResPublKeyw-LANG.xml','cfResPublKeyw.tt');
-cerif_process('output/cfPers_ResPubl-LINK.xml','cfPers_ResPubl.tt');
-cerif_process('output/cfPers-CORE.xml','cfPers.tt');
-cerif_process('output/cfPersName-ADD.xml','cfPersName.tt');
-cerif_process('output/cfOrgUnit-CORE.xml','cfOrgUnit.tt');
-cerif_process('output/cfOrgName-LANG.xml','cfOrgUnitName.tt');
-cerif_process('output/cfPers_OrgUnit-LINK.xml','cfPers_OrgUnit.tt');
+my $temp = File::Temp->newdir;
+
+cerif_process($temp . '/cfResPubl-RES.xml','cfResPubl.tt');
+cerif_process($temp . '/cfResPublTitle-LANG.xml','cfResPublTitle.tt');
+cerif_process($temp . '/cfResPublSubtitle-LANG.xml','cfResPublSubtitle.tt');
+cerif_process($temp . '/cfResPublAbstr-LANG.xml','cfResPublAbstr.tt');
+cerif_process($temp . '/cfResPublKeyw-LANG.xml','cfResPublKeyw.tt');
+cerif_process($temp . '/cfPers_ResPubl-LINK.xml','cfPers_ResPubl.tt');
+cerif_process($temp . '/cfPers-CORE.xml','cfPers.tt');
+cerif_process($temp . '/cfPersName-ADD.xml','cfPersName.tt');
+cerif_process($temp . '/cfOrgUnit-CORE.xml','cfOrgUnit.tt');
+cerif_process($temp . '/cfOrgName-LANG.xml','cfOrgUnitName.tt');
+cerif_process($temp . '/cfPers_OrgUnit-LINK.xml','cfPers_OrgUnit.tt');
+
+unlink $outfile;
+system("zip -q -j -r $outfile $temp/*.xml");
 
 sub cerif_open {
     my ($name) = @_;
