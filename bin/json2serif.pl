@@ -3,26 +3,28 @@
 # Biblio CERIF exporter
 #
 # Patrick Hochstenbach @ ugent dot be
-# 2012-05-08
+# Nicolas Steenlant @ ugent dot be
+# 2012-05-29
 #
 use Catmandu;
 use IO::File;
 use File::Temp;
 use Getopt::Long;
 use POSIX qw(strftime);
+use File::Spec::Functions qw(catdir);
+use File::Basename qw(dirname);
+use Cwd qw(realpath);
 
-my $proj_dir = '/Users/hochsten/Dev/CERIF';
+my $proj_dir = realpath(catdir(dirname(__FILE__), '..'));
 
 GetOptions("d=s"=> \$proj_dir);
 
 my $infile = shift;
 my $outfile = shift || "CERIF.zip";
 
-die "usage: $0 -d project_directory file [outfile]" unless -r $infile;
+die usage() unless -r $infile;
 
-die "proj_dir($proj_dir) not found - please correct path in json2serif.pl" unless -d $proj_dir;
-
-chdir $proj_dir;
+die usage()."\nproject_directory '$proj_dir' not found" unless -d $proj_dir;
 
 my $temp = File::Temp->newdir;
 
@@ -66,7 +68,7 @@ EOF
 
 sub cerif_process {
     my ($output,$template) = @_;
-    
+
     my $fh = cerif_open($output);
 
     my $memory = {};
@@ -87,3 +89,8 @@ sub cerif_close {
 EOF
     $fh->close();
 }
+
+sub usage {
+    "usage: $0 [-d project_directory] file [outfile]";
+}
+

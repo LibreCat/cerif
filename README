@@ -1,0 +1,6 @@
+LibreCat experimental CERIF export from a JSON input file
+
+ * cpan Template::Plugin::Digest::MD5
+ * (un)comment the CERIF files you need in bin/json2cerif.pl
+ * run bin/json2serif.pl sample-export.json CERIF.zip
+
