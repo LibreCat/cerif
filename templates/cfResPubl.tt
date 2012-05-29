@@ -3,7 +3,7 @@
   <cfResPublId>[%- id | html -%]</cfResPublId>
  [%- END %]
  [%- IF year %]
-  <cfResPublDate>[%- year | html -%]</cfResPublDate>
+  <cfResPublDate>[%- year | html -%]-01-01</cfResPublDate>
  [%- END %]
  [%- IF volume %]
   <cfVol>[%- volume | html -%]</cfVol>
@@ -15,7 +15,7 @@
   <cfSeries>[%- series_title | html -%]</cfSeries>
  [%- END %]
  [%- IF issue %]
-  <cfIssue>[%- issue | html -%]</cfResPubl>
+  <cfIssue>[%- issue | html -%]</cfIssue>
  [%- END %]
  [%- IF page.item.first %]
   <cfStartPage>[%- page.item.first | html -%]</cfStartPage>

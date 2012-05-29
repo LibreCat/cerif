@@ -4,7 +4,7 @@
 [%- ELSE -%]
  [%- IF org.ugent_id %]
 <cfOrgUnit>
-   <cfOrgUnitId>[% org_id | html %]</cfOrgUnit>
+   <cfOrgUnitId>[% org_id | html %]</cfOrgUnitId>
    <cfURI>https://biblio.ugent.be/organization/[% org_id | html %]</cfURI>
 </cfOrgUnit>
  [%- END -%]

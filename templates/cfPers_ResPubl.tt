@@ -8,5 +8,7 @@
   <cfPers_ResPubl>
     <cfPersId>[% pers_id | html %]</cfPersId>  
     <cfResPublId>[% id | html %]</cfResPublId>
+    <cfClassId></cfClassId>
+    <cfClassSchemeId></cfClassSchemeId>
   </cfPers_ResPubl>
 [%- END %]

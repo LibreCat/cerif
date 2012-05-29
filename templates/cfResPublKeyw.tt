@@ -1,8 +1,6 @@
 [%- FOREACH word IN keyword %]
 <cfResPublKeyw>
- <cfResPubId>[% id | html %]</cfResPubId>
- <cfKeyw>[% word | html %]</cfKeyw>
- <cfLangCode>eng</cfLangCode>
- <cfTrans>o</cfTrans>
+ <cfResPublId>[% id | html %]</cfResPublId>
+ <cfKeyw cfLangCode="eng" cfTrans="o">[% word | html %]</cfKeyw>
 </cfResPublKeyw>
 [%- END %]

@@ -1,8 +1,6 @@
 [%- IF alternative_title.size %]
 <cfResPublSubtitle>
   <cfResPublId>[%- id | html -%]</cfResPublId>
-  <cfSubtitle>[%- alternative_title.0 -%]</cfSubtitle>
-  <cfLangCode>eng</cfLangCode>
-  <cfTrans>o</cfTrans>
+  <cfSubtitle cfLangCode="eng" cfTrans="o">[%- alternative_title.0 -%]</cfSubtitle>
 </cfResPublSubtitle>
 [%- END %]

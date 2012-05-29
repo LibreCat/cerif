@@ -4,6 +4,8 @@
   <cfPers_OrgUnit>
    <cfPersId>[% au.ugent_id.first | html %]</cfPersId>
    <cfOrgUnitId>[% aff.ugent_id | html %]</cfOrgUnitId>
+   <cfClassId>Affilation</cfClassId>
+   <cfClassSchemeId>cfOrganisationUnit-Project</cfClassSchemeId>
   </cfPers_OrgUnit>
    [%- END %]
  [% END %]

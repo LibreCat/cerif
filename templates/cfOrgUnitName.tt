@@ -4,10 +4,8 @@
 [%- ELSE -%]
  [%- IF org.ugent_id %]
 <cfOrgUnitName>
-   <cfOrgUnitId>[% org_id | html %]</cfOrgUnit>
-   <cfName>[% org.name %]</cfName>
-   <cfLangCode>eng</cfLangCode>
-   <cfTrans>o</cfTrans>
+   <cfOrgUnitId>[% org_id | html %]</cfOrgUnitId>
+   <cfName cfLangCode="eng" cfTrans="o">[% org.name %]</cfName>
 </cfOrgUnitName>
  [%- END -%]
 [%- memory.${org_id} = 1 -%]
