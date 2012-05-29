@@ -8,14 +8,18 @@
 use Catmandu;
 use IO::File;
 use File::Temp;
+use Getopt::Long;
 use POSIX qw(strftime);
+
+my $proj_dir = '/Users/hochsten/Dev/CERIF';
+
+GetOptions("d=s"=> \$proj_dir);
 
 my $infile = shift;
 my $outfile = shift || "CERIF.zip";
 
-die "usage: $0 file [outfile]" unless -r $infile;
+die "usage: $0 -d project_directory file [outfile]" unless -r $infile;
 
-my $proj_dir = '/Users/hochsten/Dev/CERIF';
 die "proj_dir($proj_dir) not found - please correct path in json2serif.pl" unless -d $proj_dir;
 
 chdir $proj_dir;
